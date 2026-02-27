@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-restaurant.jpg";
+import restaurant1 from "@/assets/restaurant-1.jpeg";
 
 const HeroSection = () => {
   return (
@@ -8,12 +8,12 @@ const HeroSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src={heroImage}
-          alt="Velvet 24 luxurious restaurant interior"
+          src={restaurant1}
+          alt="Velvet 24 restaurant interior with elegant seating and warm lighting"
           className="h-full w-full object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
       </div>
 
       {/* Content */}
@@ -50,11 +50,20 @@ const HeroSection = () => {
           <span className="divider-gold w-16" />
         </motion.div>
 
+        <motion.p
+          className="mt-4 max-w-md font-body text-xs text-muted-foreground"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+        >
+          Radhe Infinity, Randesan, Gandhinagar
+        </motion.p>
+
         <motion.div
           className="mt-10 flex flex-col gap-4 sm:flex-row"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
         >
           <a
             href="#menu"

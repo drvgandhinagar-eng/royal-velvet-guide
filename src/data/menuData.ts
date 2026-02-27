@@ -305,10 +305,118 @@ export const lunchMenus = [
   },
 ];
 
+export interface BanquetPackage {
+  name: string;
+  price: string;
+  items: { name: string; qty: string }[];
+}
+
+export const banquetPackages: BanquetPackage[] = [
+  {
+    name: "Package 1",
+    price: "₹440",
+    items: [
+      { name: "Welcome Drink", qty: "1" },
+      { name: "Soup", qty: "1" },
+      { name: "Starter", qty: "1" },
+      { name: "Paneer Main Course", qty: "1" },
+      { name: "Veg Main Course", qty: "1" },
+      { name: "Indian Bread", qty: "1" },
+      { name: "Dal", qty: "1" },
+      { name: "Rice", qty: "1" },
+      { name: "Salad", qty: "1" },
+      { name: "Papad, Achar, Buttermilk", qty: "1" },
+      { name: "Sweet (Regular) + Ice Cream", qty: "1" },
+      { name: "Mineral Water 200ml", qty: "1" },
+    ],
+  },
+  {
+    name: "Package 2",
+    price: "₹549",
+    items: [
+      { name: "Welcome Drink", qty: "2" },
+      { name: "Soup", qty: "2" },
+      { name: "Veg Starter", qty: "1" },
+      { name: "Baked Dish / Pasta", qty: "1" },
+      { name: "Paneer Main Course", qty: "1" },
+      { name: "Veg Main Course", qty: "1" },
+      { name: "Indian Bread", qty: "2" },
+      { name: "Dal + Rice", qty: "1" },
+      { name: "Salad", qty: "2" },
+      { name: "Papad, Achar, Buttermilk", qty: "1" },
+      { name: "Sweet (Regular + Premium)", qty: "2" },
+      { name: "Premium Ice Cream", qty: "1" },
+    ],
+  },
+  {
+    name: "Package 3",
+    price: "₹650",
+    items: [
+      { name: "Welcome Drink", qty: "2" },
+      { name: "Soup", qty: "2" },
+      { name: "Starter (Veg & Paneer)", qty: "2" },
+      { name: "Baked Dish + Pasta + Chat", qty: "3" },
+      { name: "Paneer Main Course", qty: "1" },
+      { name: "Veg Main Course + Kofta", qty: "2" },
+      { name: "Indian Breads", qty: "3" },
+      { name: "Dal + Rice", qty: "1" },
+      { name: "Salad", qty: "3" },
+      { name: "Papad, Achar, Buttermilk/Raita", qty: "1" },
+      { name: "Premium Sweet", qty: "2" },
+      { name: "Premium Ice Cream", qty: "1" },
+    ],
+  },
+  {
+    name: "Package 4",
+    price: "On Request",
+    items: [
+      { name: "Welcome Drink", qty: "2" },
+      { name: "Soup", qty: "2" },
+      { name: "Starter (Veg & Paneer)", qty: "2" },
+      { name: "Baked Dish + Farshan + Pasta + Chat", qty: "4" },
+      { name: "Paneer Main Course", qty: "1" },
+      { name: "Veg Main Course + Kofta", qty: "2" },
+      { name: "Indian Breads", qty: "4" },
+      { name: "Dal + Rice", qty: "1" },
+      { name: "Premium Salad", qty: "2" },
+      { name: "Papad, Achar, Buttermilk/Raita", qty: "1" },
+      { name: "Sweet (Regular + 2 Premium)", qty: "3" },
+      { name: "Premium Ice Cream", qty: "1" },
+    ],
+  },
+];
+
+export const breakfastPackages = [
+  {
+    name: "Breakfast Package 1",
+    price: "₹110",
+    items: "Tea/Coffee + Hot Snack (Mix Bhajiya / Khaman / Samosa / Poha / Methi Gota / Fafda / Ganthiya / Aloo Paratha)",
+  },
+  {
+    name: "Breakfast Package 2",
+    price: "₹160",
+    items: "Tea/Coffee + Hot Snack + Light Snack (Bread Butter / Bread Butter Jam / Veg Sandwich / Mix Cookies)",
+  },
+];
+
+export const hallRental = [
+  { persons: "400+", rental: "Free" },
+  { persons: "300", rental: "Free" },
+  { persons: "200", rental: "Free" },
+  { persons: "100 (min)", rental: "₹3,000/hr" },
+];
+
+export const conferenceAids = [
+  { item: "Projector with Screen", price: "₹4,000" },
+  { item: "Laptop", price: "₹1,500" },
+  { item: "Collar/Cordless Mike & Podium", price: "₹1,000" },
+  { item: "Pad & Pencil", price: "₹35" },
+];
+
 export const contactInfo = {
-  phone: "+91 XXXXX XXXXX",
+  phone: "+91 80141 13322",
   email: "info@velvet24.com",
-  address: "Velvet 24, Multicuisine Restaurant & Banquet",
+  address: "124-129, 1st Floor, Radhe Infinity, Near Raksha Shakti Circle, Randesan, Gandhinagar, Gujarat - 382421",
   hours: {
     lunch: "11:00 AM – 3:00 PM",
     dinner: "6:45 PM – 11:00 PM",
