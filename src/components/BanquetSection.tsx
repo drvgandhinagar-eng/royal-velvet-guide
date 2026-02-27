@@ -140,7 +140,7 @@ const BanquetSection = () => {
                     : "glass-card text-muted-foreground hover:border-gold/30 hover:text-foreground"
                 }`}
               >
-                {pkg.name} {pkg.price !== "On Request" && `— ${pkg.price}`}
+                {pkg.name} {pkg.price !== "On Request" && `— ₹${pkg.price.replace("₹", "").charAt(0)}xx`}
               </button>
             ))}
           </div>
@@ -156,7 +156,7 @@ const BanquetSection = () => {
             >
               <div className="mb-4 text-center">
                 <h4 className="font-display text-xl text-foreground">{banquetPackages[activePkg].name}</h4>
-                <p className="font-display text-3xl font-bold text-gold">{banquetPackages[activePkg].price}</p>
+                <p className="font-display text-3xl font-bold text-gold">{banquetPackages[activePkg].price === "On Request" ? "On Request" : `₹${banquetPackages[activePkg].price.replace("₹", "").charAt(0)}xx`}</p>
                 <p className="text-xs text-muted-foreground">per person</p>
               </div>
               <div className="divider-gold mx-auto w-16 mb-4" />
