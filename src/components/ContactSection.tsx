@@ -126,6 +126,28 @@ const ContactSection = () => {
             {contactInfo.website}
           </a>
         </motion.div>
+
+        {/* Map */}
+        <motion.div
+          className="mt-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="overflow-hidden rounded-2xl border border-gold/10 shadow-gold">
+            <iframe
+              title="Velvet 24 Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3668.5!2d72.636!3d23.185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a5098decddb%3A0x398f1a1908e4fcd3!2sVelvet%2024%20-%20The%20Taste%20of%20Culture!5e0!3m2!1sen!2sin!4v1700000000000"
+              width="100%"
+              height="350"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full"
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
