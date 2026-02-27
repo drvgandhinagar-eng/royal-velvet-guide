@@ -4,7 +4,7 @@ import { contactInfo } from "@/data/menuData";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="relative py-24 px-4 bg-secondary/30">
+    <section id="contact" className="relative py-28 px-4 pattern-bg section-glow">
       <div className="mx-auto max-w-5xl">
         <motion.div
           className="mb-16 text-center"
@@ -12,40 +12,44 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className="mb-2 font-body text-xs uppercase tracking-[0.3em] text-gold-light">
+          <p className="mb-3 font-body text-xs uppercase tracking-[0.4em] text-gold-light">
             We'd Love To Hear From You
           </p>
-          <h2 className="font-display text-4xl font-bold text-gold-gradient md:text-5xl">
+          <h2 className="font-display text-4xl font-bold text-gold-gradient md:text-6xl">
             Get In Touch
           </h2>
-          <div className="mx-auto mt-4 divider-gold w-32" />
+          <div className="divider-ornament mt-6">
+            <span className="ornament-diamond" />
+          </div>
         </motion.div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { icon: Phone, label: "Call Us", value: contactInfo.phone, href: `tel:${contactInfo.phone.replace(/\s/g, "")}` },
-            { icon: Mail, label: "Email", value: contactInfo.email, href: `mailto:${contactInfo.email}` },
+            { icon: Mail, label: "Email", value: "Velvet24restaurant\n@gmail.com", href: `mailto:${contactInfo.email}` },
             { icon: Clock, label: "Lunch", value: contactInfo.hours.lunch },
             { icon: Clock, label: "Dinner", value: contactInfo.hours.dinner },
           ].map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="rounded-lg border border-border bg-card p-6 text-center transition-all hover:border-gold/30"
+              transition={{ delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="glass-card-hover rounded-2xl p-7 text-center"
             >
-              <item.icon className="mx-auto mb-3 h-6 w-6 text-gold" />
-              <p className="font-body text-xs uppercase tracking-wider text-muted-foreground">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gold/10">
+                <item.icon className="h-5 w-5 text-gold" />
+              </div>
+              <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                 {item.label}
               </p>
               {item.href ? (
-                <a href={item.href} className="mt-1 block font-elegant text-base text-foreground hover:text-gold transition-colors">
+                <a href={item.href} className="mt-2 block font-elegant text-base text-foreground hover:text-gold transition-colors whitespace-pre-line">
                   {item.value}
                 </a>
               ) : (
-                <p className="mt-1 font-elegant text-base text-foreground">{item.value}</p>
+                <p className="mt-2 font-elegant text-base text-foreground">{item.value}</p>
               )}
             </motion.div>
           ))}
@@ -53,59 +57,61 @@ const ContactSection = () => {
 
         {/* Address + Directions */}
         <motion.div
-          className="mt-8 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <MapPin className="h-4 w-4 text-gold" />
-            <p className="font-body text-xs text-muted-foreground leading-relaxed max-w-md">
-              {contactInfo.address}
-            </p>
-          </div>
-          <a
-            href={contactInfo.directionsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-2 rounded border border-gold/30 px-5 py-2 font-body text-xs font-semibold uppercase tracking-wider text-gold transition-all hover:bg-gold/10 hover:border-gold"
-          >
-            <Navigation className="h-3.5 w-3.5" />
-            Get Directions
-          </a>
-        </motion.div>
-
-        {/* Order Online Links */}
-        <motion.div
           className="mt-10 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <p className="mb-4 font-body text-sm text-muted-foreground">Order Online</p>
+          <div className="inline-flex items-start gap-3 glass-card rounded-2xl px-8 py-5">
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+            <p className="font-body text-xs text-muted-foreground leading-relaxed text-left max-w-sm">
+              {contactInfo.address}
+            </p>
+          </div>
+          <div className="mt-5">
+            <a
+              href={contactInfo.directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 rounded-lg border border-gold/30 px-6 py-3 font-body text-xs font-semibold uppercase tracking-wider text-gold transition-all hover:bg-gold/10 hover:border-gold hover:shadow-gold"
+            >
+              <Navigation className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              Get Directions
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Order Online Links */}
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <p className="mb-5 font-body text-xs uppercase tracking-[0.3em] text-muted-foreground">Order Online</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
               href={contactInfo.zomatoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded border border-border px-6 py-2.5 font-body text-xs font-semibold uppercase tracking-wider text-foreground transition-all hover:border-gold/40 hover:text-gold"
+              className="group glass-card-hover rounded-xl px-8 py-4 font-body text-sm font-semibold text-foreground"
             >
-              🍽️ Zomato
+              🍽️ <span className="group-hover:text-gold transition-colors">Zomato</span>
             </a>
             <a
               href={contactInfo.swiggyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded border border-border px-6 py-2.5 font-body text-xs font-semibold uppercase tracking-wider text-foreground transition-all hover:border-gold/40 hover:text-gold"
+              className="group glass-card-hover rounded-xl px-8 py-4 font-body text-sm font-semibold text-foreground"
             >
-              🛵 Swiggy
+              🛵 <span className="group-hover:text-gold transition-colors">Swiggy</span>
             </a>
           </div>
         </motion.div>
 
         {/* Website */}
         <motion.div
-          className="mt-6 text-center"
+          className="mt-8 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
