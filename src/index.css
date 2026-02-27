@@ -233,28 +233,6 @@
   background: hsl(40 60% 50% / 0.5);
 }
 
-/* Marquee animation */
-.marquee-row {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-}
-
-.marquee-track {
-  display: flex;
-  animation: marquee-scroll 30s linear infinite;
-  width: max-content;
-}
-
-.marquee-reverse {
-  animation-direction: reverse;
-}
-
-@keyframes marquee-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
