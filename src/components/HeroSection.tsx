@@ -3,8 +3,11 @@ import { motion } from "framer-motion";
 import { ChevronDown, Utensils, Users, Star } from "lucide-react";
 import restaurant1 from "@/assets/restaurant-1.jpeg";
 import restaurant5 from "@/assets/restaurant-5.jpeg";
+import food4 from "@/assets/food-4.jpeg";
+import food3 from "@/assets/food-3.jpeg";
+import food1 from "@/assets/food-1.jpeg";
 
-const heroImages = [restaurant1, restaurant5];
+const heroImages = [food4, restaurant1, food3, restaurant5, food1];
 
 const stats = [
   { icon: Utensils, value: "200+", label: "Menu Items" },
@@ -18,7 +21,7 @@ const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setBgIdx((prev) => (prev + 1) % heroImages.length);
-    }, 6000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
