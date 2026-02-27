@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import food1 from "@/assets/food-1.jpeg";
 import food2 from "@/assets/food-2.jpeg";
 import food3 from "@/assets/food-3.jpeg";
@@ -22,6 +23,48 @@ import food20 from "@/assets/food-20.jpeg";
 const row1 = [food4, food13, food9, food1, food11, food15, food3, food17, food19, food16];
 const row2 = [food2, food14, food5, food18, food10, food12, food6, food20, food7, food8];
 
+const MarqueeRow = ({ images, reverse = false }: { images: string[]; reverse?: boolean }) => {
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    let raf: number;
+    let pos = 0;
+    const speed = reverse ? 0.5 : -0.5;
+    const halfWidth = el.scrollWidth / 2;
+
+    const animate = () => {
+      pos += speed;
+      if (!reverse && pos <= -halfWidth) pos = 0;
+      if (reverse && pos >= 0) pos = -halfWidth;
+      el.style.transform = `translateX(${pos}px)`;
+      raf = requestAnimationFrame(animate);
+    };
+    // Start from correct position for reverse
+    if (reverse) pos = -halfWidth;
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, [reverse]);
+
+  const doubled = [...images, ...images];
+
+  return (
+    <div className="overflow-hidden w-full">
+      <div ref={trackRef} className="flex w-max" style={{ willChange: "transform" }}>
+        {doubled.map((img, i) => (
+          <div
+            key={i}
+            className="mx-3 h-20 w-20 flex-shrink-0 overflow-hidden rounded-full border-2 border-gold/20 shadow-gold transition-transform hover:scale-110 hover:border-gold/50 sm:h-24 sm:w-24"
+          >
+            <img src={img} alt="Velvet 24 dish" className="h-full w-full object-cover" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const FoodMarquee = () => {
   return (
     <section className="relative py-16 overflow-hidden">
@@ -41,32 +84,9 @@ const FoodMarquee = () => {
         </div>
       </div>
 
-      {/* Row 1 — scrolls left */}
-      <div className="marquee-row mb-5">
-        <div className="marquee-track">
-          {[...row1, ...row1].map((img, i) => (
-            <div
-              key={i}
-              className="mx-3 h-20 w-20 flex-shrink-0 overflow-hidden rounded-full border-2 border-gold/20 shadow-gold transition-transform hover:scale-110 hover:border-gold/50 sm:h-24 sm:w-24"
-            >
-              <img src={img} alt="Velvet 24 dish" className="h-full w-full object-cover" loading="lazy" />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Row 2 — scrolls right */}
-      <div className="marquee-row">
-        <div className="marquee-track marquee-reverse">
-          {[...row2, ...row2].map((img, i) => (
-            <div
-              key={i}
-              className="mx-3 h-20 w-20 flex-shrink-0 overflow-hidden rounded-full border-2 border-gold/20 shadow-gold transition-transform hover:scale-110 hover:border-gold/50 sm:h-24 sm:w-24"
-            >
-              <img src={img} alt="Velvet 24 dish" className="h-full w-full object-cover" loading="lazy" />
-            </div>
-          ))}
-        </div>
+      <div className="space-y-5">
+        <MarqueeRow images={row1} />
+        <MarqueeRow images={row2} reverse />
       </div>
     </section>
   );
