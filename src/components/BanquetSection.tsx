@@ -109,12 +109,12 @@ const BanquetSection = () => {
               ))}
             </div>
 
-            <a
-              href="#contact"
-              className="mt-8 inline-block group relative overflow-hidden bg-gold-gradient rounded-lg px-10 py-3.5 font-body text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all hover:shadow-gold-lg"
+            <button
+              onClick={() => window.dispatchEvent(new Event("openVelvetChat"))}
+              className="mt-8 inline-block group relative overflow-hidden bg-gold-gradient rounded-lg px-10 py-3.5 font-body text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all hover:shadow-gold-lg cursor-pointer"
             >
               Enquire Now
-            </a>
+            </button>
           </motion.div>
         </div>
 
