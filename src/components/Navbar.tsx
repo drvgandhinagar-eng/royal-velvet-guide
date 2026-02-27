@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
+  { label: "Gallery", href: "#gallery" },
   { label: "Menu", href: "#menu" },
   { label: "Specials", href: "#specials" },
   { label: "Banquet", href: "#banquet" },

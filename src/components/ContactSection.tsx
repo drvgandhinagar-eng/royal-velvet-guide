@@ -24,7 +24,7 @@ const ContactSection = () => {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { icon: Phone, label: "Call Us", value: contactInfo.phone },
-            { icon: Mail, label: "Email", value: contactInfo.email },
+            { icon: MapPin, label: "Location", value: "Randesan, Gandhinagar" },
             { icon: Clock, label: "Lunch", value: contactInfo.hours.lunch },
             { icon: Clock, label: "Dinner", value: contactInfo.hours.dinner },
           ].map((item, i) => (
@@ -45,9 +45,21 @@ const ContactSection = () => {
           ))}
         </div>
 
-        {/* Order Online Links - placeholders */}
+        {/* Address */}
         <motion.div
-          className="mt-12 text-center"
+          className="mt-8 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <p className="font-body text-xs text-muted-foreground leading-relaxed max-w-md mx-auto">
+            {contactInfo.address}
+          </p>
+        </motion.div>
+
+        {/* Order Online Links */}
+        <motion.div
+          className="mt-10 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

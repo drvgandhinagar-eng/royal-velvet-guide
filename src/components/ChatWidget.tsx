@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send } from "lucide-react";
-import { menuCategories, lunchMenus, contactInfo } from "@/data/menuData";
+import { menuCategories, lunchMenus, contactInfo, banquetPackages } from "@/data/menuData";
 
 interface Message {
   role: "user" | "assistant";
@@ -24,8 +24,12 @@ function searchMenu(query: string): string {
   }
 
   // Check for banquet queries
-  if (/banquet|event|wedding|party|celebration|sangeet|reception|corporate|conference|capacity/i.test(q)) {
-    return "🏛️ **Velvet 24 Banquet**\n- Capacity: **100 to 400 guests**\n- Events: Weddings, Receptions, Sangeet, Ring Ceremony, Birthday Parties, Corporate Events, Conferences & Family Gatherings\n\nFor bookings, please contact us at **" + contactInfo.phone + "**";
+  if (/banquet|event|wedding|party|celebration|sangeet|reception|corporate|conference|capacity|package/i.test(q)) {
+    if (/package|price|cost|rate/i.test(q)) {
+      const pkgs = banquetPackages.map(p => `- **${p.name}** — ${p.price}/person`).join("\n");
+      return `🏛️ **Banquet Packages** (per person, GST extra):\n${pkgs}\n\nAlso available: Breakfast packages from ₹110/person.\n\nFor bookings: **${contactInfo.phone}**`;
+    }
+    return "🏛️ **Velvet 24 Banquet**\n- Capacity: **100 to 400 guests**\n- Events: Weddings, Receptions, Sangeet, Ring Ceremony, Birthday Parties, Corporate Events, Conferences & Family Gatherings\n- Hall rental free for 200+ guests\n- Packages start from **₹440/person**\n\nFor bookings, contact us at **" + contactInfo.phone + "**";
   }
 
   // Check for lunch specials
