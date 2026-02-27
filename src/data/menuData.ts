@@ -415,8 +415,12 @@ export const conferenceAids = [
 
 export const contactInfo = {
   phone: "+91 80141 13322",
-  email: "info@velvet24.com",
+  email: "Velvet24restaurant@gmail.com",
+  website: "www.velvet24.in",
   address: "124-129, 1st Floor, Radhe Infinity, Near Raksha Shakti Circle, Randesan, Gandhinagar, Gujarat - 382421",
+  directionsUrl: "https://www.google.com/maps/dir/23.0555648,72.5614592/23.1854712,72.6399415/@23.1206434,72.5224834,12z/data=!3m1!4b1!4m4!4m3!1m1!4e1!1m0?entry=ttu&g_ep=EgoyMDI2MDIyNC4wIKXMDSoASAFQAw%3D%3D",
+  zomatoUrl: "https://www.zomato.com/ahmedabad/velvet-24-the-taste-of-culture-infocity-gandhinagar",
+  swiggyUrl: "https://www.swiggy.com/city/ahmedabad/velvet-24-restaurant-and-banquet-gandhinagar-rest1133323",
   hours: {
     lunch: "11:00 AM – 3:00 PM",
     dinner: "6:45 PM – 11:00 PM",

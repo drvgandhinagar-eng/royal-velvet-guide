@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Users, PartyPopper, Building2 } from "lucide-react";
 import { banquetPackages, hallRental, conferenceAids } from "@/data/menuData";
-import restaurant2 from "@/assets/restaurant-2.jpeg";
+import banquetImage from "@/assets/banquet-real.png";
 
 const events = [
   { icon: PartyPopper, label: "Sangeet / Ring Ceremony / Wedding / Reception" },
@@ -26,7 +26,7 @@ const BanquetSection = () => {
             transition={{ duration: 0.8 }}
           >
             <img
-              src={restaurant2}
+              src={banquetImage}
               alt="Velvet 24 banquet hall decorated for celebration"
               className="w-full h-80 lg:h-[500px] object-cover rounded-lg"
               loading="lazy"
