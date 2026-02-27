@@ -25,7 +25,7 @@ const BanquetSection = () => {
   const prevImg = () => setCurrentImg((c) => (c - 1 + banquetImages.length) % banquetImages.length);
 
   return (
-    <section id="banquet" className="relative py-24 px-4">
+    <section id="banquet" className="relative py-28 px-4 section-glow">
       <div className="mx-auto max-w-6xl">
         {/* Top: Image Carousel + Info */}
         <div className="grid gap-12 lg:grid-cols-2 items-center mb-20">
@@ -78,13 +78,15 @@ const BanquetSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="mb-2 font-body text-xs uppercase tracking-[0.3em] text-gold-light">
+            <p className="mb-3 font-body text-xs uppercase tracking-[0.4em] text-gold-light">
               Grand Celebrations
             </p>
             <h2 className="font-display text-4xl font-bold text-gold-gradient md:text-5xl">
               The Banquet
             </h2>
-            <div className="mt-4 divider-gold w-24" />
+            <div className="divider-ornament mt-5">
+              <span className="ornament-diamond" />
+            </div>
 
             <p className="mt-6 font-elegant text-lg leading-relaxed text-foreground/70">
               Transform your special moments into unforgettable memories at Velvet 24's
@@ -95,7 +97,7 @@ const BanquetSection = () => {
               {events.map((event, i) => (
                 <motion.div
                   key={i}
-                  className="flex items-start gap-4 rounded-lg border border-border/50 p-4 transition-all hover:border-gold/30 hover:bg-secondary/30"
+                  className="flex items-start gap-4 rounded-xl glass-card p-4 transition-all hover:border-gold/30"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -109,7 +111,7 @@ const BanquetSection = () => {
 
             <a
               href="#contact"
-              className="mt-8 inline-block bg-gold-gradient rounded px-8 py-3 font-body text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all hover:shadow-gold"
+              className="mt-8 inline-block group relative overflow-hidden bg-gold-gradient rounded-lg px-10 py-3.5 font-body text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all hover:shadow-gold-lg"
             >
               Enquire Now
             </a>
@@ -134,8 +136,8 @@ const BanquetSection = () => {
                 onClick={() => setActivePkg(i)}
                 className={`rounded-full px-5 py-2 font-body text-xs font-medium uppercase tracking-wider transition-all duration-300 ${
                   activePkg === i
-                    ? "bg-gold-gradient text-primary-foreground shadow-gold"
-                    : "border border-border text-muted-foreground hover:border-gold/40 hover:text-foreground"
+                    ? "bg-gold-gradient text-primary-foreground shadow-gold-lg"
+                    : "glass-card text-muted-foreground hover:border-gold/30 hover:text-foreground"
                 }`}
               >
                 {pkg.name} {pkg.price !== "On Request" && `— ${pkg.price}`}
@@ -150,7 +152,7 @@ const BanquetSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="mx-auto max-w-lg rounded-xl border border-border bg-card p-6"
+              className="mx-auto max-w-lg rounded-2xl glass-card p-8"
             >
               <div className="mb-4 text-center">
                 <h4 className="font-display text-xl text-foreground">{banquetPackages[activePkg].name}</h4>
@@ -173,7 +175,7 @@ const BanquetSection = () => {
         {/* Hall Rental & Conference */}
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           <motion.div
-            className="rounded-xl border border-border bg-card p-6"
+            className="rounded-2xl glass-card p-7"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -190,7 +192,7 @@ const BanquetSection = () => {
           </motion.div>
 
           <motion.div
-            className="rounded-xl border border-border bg-card p-6"
+            className="rounded-2xl glass-card p-7"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
