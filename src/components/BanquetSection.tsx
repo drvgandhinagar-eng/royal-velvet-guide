@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Users, PartyPopper, Building2 } from "lucide-react";
+import { Users, PartyPopper, Building2, ChevronLeft, ChevronRight } from "lucide-react";
 import { banquetPackages, hallRental, conferenceAids } from "@/data/menuData";
-import banquetImage from "@/assets/banquet-real.png";
+import banquet1 from "@/assets/banquet-1.jpeg";
+import banquet2 from "@/assets/banquet-2.jpeg";
+import banquet3 from "@/assets/banquet-3.jpeg";
+import banquet4 from "@/assets/banquet-4.jpeg";
+import banquet5 from "@/assets/banquet-5.jpeg";
+import banquet6 from "@/assets/banquet-6.jpeg";
+
+const banquetImages = [banquet1, banquet2, banquet3, banquet5, banquet4, banquet6];
 
 const events = [
   { icon: PartyPopper, label: "Sangeet / Ring Ceremony / Wedding / Reception" },
@@ -12,11 +19,15 @@ const events = [
 
 const BanquetSection = () => {
   const [activePkg, setActivePkg] = useState(0);
+  const [currentImg, setCurrentImg] = useState(0);
+
+  const nextImg = () => setCurrentImg((c) => (c + 1) % banquetImages.length);
+  const prevImg = () => setCurrentImg((c) => (c - 1 + banquetImages.length) % banquetImages.length);
 
   return (
     <section id="banquet" className="relative py-24 px-4">
       <div className="mx-auto max-w-6xl">
-        {/* Top: Image + Info */}
+        {/* Top: Image Carousel + Info */}
         <div className="grid gap-12 lg:grid-cols-2 items-center mb-20">
           <motion.div
             className="relative overflow-hidden rounded-lg"
@@ -25,14 +36,37 @@ const BanquetSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <img
-              src={banquetImage}
-              alt="Velvet 24 banquet hall decorated for celebration"
-              className="w-full h-80 lg:h-[500px] object-cover rounded-lg"
-              loading="lazy"
-            />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentImg}
+                src={banquetImages[currentImg]}
+                alt={`Velvet 24 banquet hall view ${currentImg + 1}`}
+                className="w-full h-80 lg:h-[500px] object-cover rounded-lg"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                loading="lazy"
+              />
+            </AnimatePresence>
             <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent rounded-lg" />
-            <div className="absolute bottom-6 left-6">
+            
+            {/* Nav arrows */}
+            <button onClick={prevImg} className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-background/60 backdrop-blur text-foreground hover:bg-background/80" aria-label="Previous">
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button onClick={nextImg} className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-background/60 backdrop-blur text-foreground hover:bg-background/80" aria-label="Next">
+              <ChevronRight className="h-4 w-4" />
+            </button>
+
+            {/* Dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {banquetImages.map((_, i) => (
+                <button key={i} onClick={() => setCurrentImg(i)} className={`h-1.5 rounded-full transition-all ${i === currentImg ? "w-5 bg-gold" : "w-1.5 bg-foreground/30"}`} aria-label={`Image ${i+1}`} />
+              ))}
+            </div>
+
+            <div className="absolute bottom-10 left-6">
               <p className="font-display text-2xl font-bold text-gold">100 – 400 Guests</p>
               <p className="font-body text-sm text-foreground/80">Biggest Celebration Destination</p>
             </div>
@@ -72,6 +106,13 @@ const BanquetSection = () => {
                 </motion.div>
               ))}
             </div>
+
+            <a
+              href="#contact"
+              className="mt-8 inline-block bg-gold-gradient rounded px-8 py-3 font-body text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all hover:shadow-gold"
+            >
+              Enquire Now
+            </a>
           </motion.div>
         </div>
 
@@ -86,7 +127,6 @@ const BanquetSection = () => {
           </h3>
           <p className="mb-6 text-center font-body text-xs text-muted-foreground">Per person • GST Extra</p>
 
-          {/* Package tabs */}
           <div className="mb-8 flex flex-wrap justify-center gap-3">
             {banquetPackages.map((pkg, i) => (
               <button
@@ -166,15 +206,6 @@ const BanquetSection = () => {
               ))}
             </div>
           </motion.div>
-        </div>
-
-        <div className="mt-10 text-center">
-          <a
-            href="#contact"
-            className="inline-block bg-gold-gradient rounded px-8 py-3 font-body text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all hover:shadow-gold"
-          >
-            Enquire Now
-          </a>
         </div>
       </div>
     </section>
